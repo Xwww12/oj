@@ -14,16 +14,16 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     // 插入时填充
     @Override
     public void insertFill(MetaObject metaObject) {
-        if (metaObject.hasSetter("gmtCreate"))
-            metaObject.setValue("gmtCreate", LocalDateTime.now());
-        if (metaObject.hasSetter("gmtModified"))
-            metaObject.setValue("gmtModified", LocalDateTime.now());
+        if (metaObject.hasSetter("createTime"))
+            metaObject.setValue("createTime", LocalDateTime.now());
+        if (metaObject.hasSetter("updateTime"))
+            metaObject.setValue("updateTime", LocalDateTime.now());
     }
 
     // 更新时填充
     @Override
     public void updateFill(MetaObject metaObject) {
-        if (metaObject.hasSetter("gmtModified"))
-            metaObject.setValue("gmtModified", LocalDateTime.now());
+        if (metaObject.hasSetter("updateTime"))
+            metaObject.setValue("updateTime", LocalDateTime.now());
     }
 }

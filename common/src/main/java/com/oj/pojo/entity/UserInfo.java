@@ -9,9 +9,6 @@ import lombok.Data;
 @Data
 @ApiModel(description = "用户信息")
 public class UserInfo extends BaseEntity {
-    @TableId(value = "uuid",type = IdType.AUTO)
-    private Long uuid;
-
     @ApiModelProperty(value = "用户名")
     private String username;
 
