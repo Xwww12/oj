@@ -553,13 +553,12 @@ CREATE TABLE `tag` (
   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL COMMENT '标签名字',
   `color` VARCHAR(10) DEFAULT NULL COMMENT '标签颜色',
-  `oj` VARCHAR(255) DEFAULT 'ME' COMMENT '标签所属oj',
   `gid` BIGINT UNSIGNED DEFAULT NULL,
   `tcid` BIGINT UNSIGNED DEFAULT NULL COMMENT '标签分类id',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `update_time` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`,`oj`,`gid`)
+  UNIQUE KEY `name` (`name`,`gid`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb3;
 
 /*Data for the table `tag` */
@@ -571,7 +570,6 @@ DROP TABLE IF EXISTS `tag_classification`;
 CREATE TABLE `tag_classification` (
   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '标签分类名称',
-  `oj` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '标签分类所属oj',
   `create_time` DATETIME DEFAULT NULL,
   `update_time` DATETIME DEFAULT NULL,
   `rank` INT(10) UNSIGNED ZEROFILL DEFAULT NULL COMMENT '标签分类优先级 越小越高',

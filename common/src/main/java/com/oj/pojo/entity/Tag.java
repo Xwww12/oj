@@ -18,9 +18,6 @@ public class Tag extends BaseEntity {
     @ApiModelProperty(value = "标签颜色")
     private String color;
 
-    @ApiModelProperty(value = "标签所属oj")
-    private String oj;
-
     @ApiModelProperty(value = "团队ID")
     private Long gid;
 
