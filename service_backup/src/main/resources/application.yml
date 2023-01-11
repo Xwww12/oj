@@ -6,6 +6,8 @@ mybatis-plus:
   configuration:
     # 自动驼峰命名
     map-underscore-to-camel-case: true
+    # 显示sql
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
