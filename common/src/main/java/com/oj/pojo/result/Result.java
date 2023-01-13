@@ -46,12 +46,12 @@ public class Result<T> {
 
     /**
      * 操作失败
-     * @param data
+     * @param msg
      * @param <T>
      * @return
      */
-    public static <T> Result<T> error(T data) {
-        return build(data, ResultCodeEnum.FAIL);
+    public static <T> Result<T> error(String msg) {
+        return build(null, ResultCodeEnum.FAIL, msg);
     }
 
     public static <T> Result<T> build(T data) {
