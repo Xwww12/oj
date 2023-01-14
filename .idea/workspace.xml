@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e2e292c-bd3d-4382-94a2-ce9c3d650e9a" name="变更" comment="init">
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/oj/pojo/exception/GlobalException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_backup/src/main/java/com/oj/controller/AdminTagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service_backup/src/main/java/com/oj/controller/AdminTagController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_backup/src/main/java/com/oj/service/TagClassificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service_backup/src/main/java/com/oj/service/TagClassificationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_backup/src/main/java/com/oj/service/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service_backup/src/main/java/com/oj/service/TagService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_backup/src/main/java/com/oj/service/impl/TagClassificationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service_backup/src/main/java/com/oj/service/impl/TagClassificationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_backup/src/main/java/com/oj/service/impl/TagServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service_backup/src/main/java/com/oj/service/impl/TagServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="demo" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

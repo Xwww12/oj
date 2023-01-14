@@ -1,23 +1,26 @@
 package com.oj.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.oj.mapper.TagClassificationMapper;
 import com.oj.mapper.TagMapper;
 import com.oj.pojo.entity.Tag;
 import com.oj.pojo.entity.TagClassification;
+import com.oj.pojo.exception.GlobalException;
+import com.oj.pojo.result.ResultCodeEnum;
 import com.oj.pojo.vo.TagVO;
 import com.oj.service.TagClassificationService;
-import com.oj.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class TagClassificationServiceImpl extends ServiceImpl<TagClassificationMapper, TagClassification> implements TagClassificationService {
+
+    @Autowired
+    private TagClassificationService tagClassificationService;
+
     @Autowired
     private TagMapper tagMapper;
 
@@ -65,5 +68,64 @@ public class TagClassificationServiceImpl extends ServiceImpl<TagClassificationM
         Collections.sort(res, (a, b) -> a.getClassification().getRank() - b.getClassification().getRank());
 
         return res;
+    }
+
+    /**
+     * 添加标签分类
+     * @param tagClassification
+     * @return
+     */
+    @Override
+    public void addTagClassification(TagClassification tagClassification) {
+
+        //设置mp的配置
+        QueryWrapper<TagClassification> tagClassificationQueryWrapper = new QueryWrapper<>();
+        tagClassificationQueryWrapper.eq("name", tagClassification.getName());
+
+        //查询数据库是否有此对象
+        TagClassification getTagClassification = tagClassificationService.getOne(tagClassificationQueryWrapper,false);
+
+        if(!Objects.equals(getTagClassification,null)){
+            throw new GlobalException(ResultCodeEnum.FAIL);
+        }
+
+        boolean save = tagClassificationService.save(tagClassification);
+
+        if(!save){
+            throw new GlobalException(ResultCodeEnum.FAIL);
+        }
+
+    }
+
+    /**
+     * 删除标签分类
+     * @param id
+     * @return
+     */
+    @Override
+    public void deleteTagClassification(Long id){
+
+        boolean isOk = tagClassificationService.removeById(id);
+
+        if(!isOk){
+            throw new GlobalException(ResultCodeEnum.FAIL);
+        }
+
+    }
+
+    /**
+     * 修改分类标签
+     * @param tagClassification
+     * @return
+     */
+    @Override
+    public void updateTagClassification(TagClassification tagClassification) {
+
+        boolean isOk = tagClassificationService.updateById(tagClassification);
+
+        if(!isOk){
+            throw new GlobalException(ResultCodeEnum.FAIL);
+        }
+
     }
 }

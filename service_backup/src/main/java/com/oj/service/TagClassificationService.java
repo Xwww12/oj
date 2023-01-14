@@ -10,4 +10,10 @@ import java.util.List;
 public interface TagClassificationService extends IService<TagClassification> {
 
     List<TagVO> getTagAndTagClassification();
+
+    void addTagClassification(TagClassification tagClassification);
+
+    void deleteTagClassification(Long id);
+
+    void updateTagClassification(TagClassification tagClassification);
 }

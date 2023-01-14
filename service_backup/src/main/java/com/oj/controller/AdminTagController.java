@@ -1,20 +1,17 @@
 package com.oj.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.oj.pojo.entity.Tag;
 import com.oj.pojo.entity.TagClassification;
+import com.oj.pojo.exception.GlobalException;
 import com.oj.pojo.result.Result;
 import com.oj.pojo.vo.TagVO;
 import com.oj.service.TagClassificationService;
 import com.oj.service.TagService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 @Api("标签接口")
@@ -35,37 +32,67 @@ public class AdminTagController {
 
     @ApiOperation("添加标签")
     @PostMapping("/add")
-    public Result<Void> addTag(@RequestBody Tag tag) {
-        return null;
+    public Result<String> addTag(@RequestBody Tag tag) {
+        try {
+            tagService.addTag(tag);
+        }catch (GlobalException e){
+            return Result.error(e.getMessage());
+        }
+        return Result.success();
     }
 
     @ApiOperation("删除单个标签")
     @DeleteMapping("/delete/{id}")
-    public Result<Void> deleteTag(@PathVariable("id") Long id) {
-        return null;
+    public Result<String> deleteTag(@PathVariable("id") Long id) {
+        try {
+            tagService.deleteTag(id);
+        }catch (GlobalException e){
+            return Result.error(e.getMessage());
+        }
+        return Result.success();
     }
 
     @ApiOperation("修改标签")
     @PostMapping("/update")
-    public Result<Void> updateTag(@RequestBody Tag tag) {
-        return null;
+    public Result<String> updateTag(@RequestBody Tag tag) {
+        try {
+            tagService.updateTag(tag);
+        }catch (GlobalException e){
+            return Result.error(e.getMessage());
+        }
+        return Result.success();
     }
 
     @ApiOperation("添加标签分类")
     @PostMapping("/tagClassification/add")
-    public Result<Void> addTagClassification(@RequestBody TagClassification tagClassification) {
-        return null;
+    public Result<String> addTagClassification(@RequestBody TagClassification tagClassification) {
+        try {
+            tagClassificationService.addTagClassification(tagClassification);
+        }catch (GlobalException e){
+            return Result.error(e.getMessage());
+        }
+        return Result.success();
     }
 
     @ApiOperation("删除单个标签分类")
     @DeleteMapping("/tagClassification/delete/{id}")
-    public Result<Void> deleteTagClassification(@PathVariable("id") Long id) {
-        return null;
+    public Result<String> deleteTagClassification(@PathVariable("id") Long id) {
+        try {
+            tagClassificationService.deleteTagClassification(id);
+        }catch (GlobalException e){
+            return Result.error(e.getMessage());
+        }
+        return Result.success();
     }
 
     @ApiOperation("修改标签分类")
     @PostMapping("/tagClassification/update")
-    public Result<Void> updateTagClassification(@RequestBody TagClassification tagClassification) {
-        return null;
+    public Result<String> updateTagClassification(@RequestBody TagClassification tagClassification) {
+        try {
+            tagClassificationService.updateTagClassification(tagClassification);
+        }catch (GlobalException e){
+            return Result.error(e.getMessage());
+        }
+        return Result.success();
     }
 }
