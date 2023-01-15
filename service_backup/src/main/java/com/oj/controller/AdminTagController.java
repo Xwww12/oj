@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api("标签接口")
+@Api(tags = "标签接口")
 @RestController
 @RequestMapping("/api/admin/tag")
 public class AdminTagController {
@@ -53,7 +53,7 @@ public class AdminTagController {
     }
 
     @ApiOperation("修改标签")
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result<String> updateTag(@RequestBody Tag tag) {
         try {
             tagService.updateTag(tag);
@@ -86,7 +86,7 @@ public class AdminTagController {
     }
 
     @ApiOperation("修改标签分类")
-    @PostMapping("/tagClassification/update")
+    @PutMapping("/tagClassification/update")
     public Result<String> updateTagClassification(@RequestBody TagClassification tagClassification) {
         try {
             tagClassificationService.updateTagClassification(tagClassification);
