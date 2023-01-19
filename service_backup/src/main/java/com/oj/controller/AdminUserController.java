@@ -31,8 +31,8 @@ public class AdminUserController {
 
     @ApiOperation("添加单个用户")
     @PostMapping("/add")
-    public Result<Void> addUser(@RequestBody UserInfo userInfo) {
-        return Result.error("功能未开发");
+    public Result<String> addUser(@RequestBody UserInfo userInfo) {
+        return adminUserInfoService.addUser(userInfo);
     }
 
     @ApiOperation("批量添加用户")

@@ -2,6 +2,7 @@ package com.oj.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -10,6 +11,7 @@ import com.oj.mapper.UserInfoMapper;
 import com.oj.mapper.UserRoleMapper;
 import com.oj.pojo.entity.Role;
 import com.oj.pojo.entity.UserInfo;
+import com.oj.pojo.exception.GlobalException;
 import com.oj.pojo.relation.UserRoleRelation;
 import com.oj.pojo.result.Result;
 import com.oj.pojo.vo.UserInfoRoleVO;
@@ -22,6 +24,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class AdminUserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> implements AdminUserInfoService {
+
+    @Autowired
+    private AdminUserInfoService userInfoService;
 
     @Autowired
     private UserInfoMapper userInfoMapper;
@@ -80,6 +85,31 @@ public class AdminUserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserIn
     }
 
     /**
+     *
+     * 添加用户
+     *
+     * @param userInfo
+     * @return
+     */
+    @Override
+    public Result<String> addUser(UserInfo userInfo) {
+        System.out.println(userInfo.getId());
+
+        QueryWrapper<UserInfo> userInfoQueryWrapper = new QueryWrapper<>();
+        userInfoQueryWrapper.eq("username",userInfo.getUsername());
+
+        //判断用户是否存在
+        UserInfo one = userInfoService.getOne(userInfoQueryWrapper);
+        if (one != null){
+            return Result.error("用户已经存在!");
+        }
+
+        //添加用户
+        userInfoService.save(userInfo);
+        return Result.success();
+    }
+
+    /**
      * 查询角色信息并转化为VO
      * @param current
      * @param limit
@@ -114,4 +144,6 @@ public class AdminUserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserIn
         }
         return res;
     }
+
+
 }

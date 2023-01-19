@@ -10,4 +10,7 @@ import org.springframework.stereotype.Service;
 
 public interface AdminUserInfoService extends IService<UserInfo> {
     Result<IPage<UserInfoRoleVO>> getUserList(Long current, Long limit, String keyword);
+
+    Result<String> addUser(UserInfo userInfo);
+
 }
